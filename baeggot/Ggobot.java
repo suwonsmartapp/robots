@@ -22,7 +22,7 @@ public class Ggobot extends AdvancedRobot {
 			setTurnGunRight(10); // 총돌리기
 			//setTurnRadarRight(10); // 레이더 돌리기
 			execute();
-			waitFor(new TurnCompleteCondition(this));
+			//waitFor(new TurnCompleteCondition(this));
 		}
 	}
 	
