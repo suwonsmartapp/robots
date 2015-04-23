@@ -1,3 +1,5 @@
+package juntaek;
+import robocode.*;
 /**
  * Copyright (c) 2001-2014 Mathew A. Nelson and Robocode contributors
  * All rights reserved. This program and the accompanying materials
@@ -5,10 +7,9 @@
  * which accompanies this distribution, and is available at
  * http://robocode.sourceforge.net/license/epl-v10.html
  */
-package samplesentry;
 
 
-import robocode.*;
+
 import robocode.util.Utils;
 
 import java.awt.BasicStroke;
@@ -57,7 +58,7 @@ import java.util.*;
  * 
  * @since 1.9.0.0
  */
-public class BorderGuard extends AdvancedRobot implements BorderSentry {
+public class Juntaek extends AdvancedRobot implements BorderSentry {
 
 	// Constants
 	final double FIREPOWER = 3; // Max. power => violent as this robot can afford it!
@@ -714,3 +715,4 @@ public class BorderGuard extends AdvancedRobot implements BorderSentry {
 		}
 	}
 }
+
