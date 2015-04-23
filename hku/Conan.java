@@ -50,7 +50,7 @@ public class Conan extends AdvancedRobot {
 	
 	// 총알에 맞았을때
 	public void onHitByBullet(ScannedRobotEvent event) {
-		movingForward = true;
+		movingForward = false;
 		reverseDirection();
 	}
 	
@@ -72,15 +72,15 @@ public class Conan extends AdvancedRobot {
 	
 	public void reverseDirection() {
 		if (movingForward) {
-			setTurnLeft(30);
-			setBack(200);
-			setTurnGunLeft(90);
 			movingForward = false;
-		} else {
-			setTurnRight(90);
+			setTurnLeft(100);
 			setAhead(200);
-			setTurnGunRight(90);
+			execute();
+		} else {
 			movingForward = true;
+			setTurnRight(100);
+			setBack(200);
+			execute();
 		}
 	}
 	
