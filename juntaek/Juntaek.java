@@ -87,7 +87,7 @@ public class Juntaek extends AdvancedRobot implements BorderSentry {
 	/**
 	 * Constructs this robot.
 	 */
-	public BorderGuard() {
+	public Juntaek() {
 		// We initialize a specialized HashMap that uses a linked list for the access order.
 		// This means that the last accessed robot entry is listed first, when we iterate over its
 		// values. This robot always sweep the radar towards the oldest scanned robot.
