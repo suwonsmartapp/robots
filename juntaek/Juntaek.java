@@ -58,7 +58,7 @@ import java.util.*;
  * 
  * @since 1.9.0.0
  */
-public class Juntaek extends AdvancedRobot implements BorderSentry {
+public class Juntaek extends AdvancedRobot {
 
 	// Constants
 	final double FIREPOWER = 3; // Max. power => violent as this robot can afford it!
