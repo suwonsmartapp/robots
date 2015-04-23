@@ -34,5 +34,22 @@ public class Tank extends Robot {
 	public void onMouseClicked(MouseEvent e) {
 		
 	}
+	
+	@Override
+	public void ahead(double distance) {
+		
+	}
+	
+	@Override
+	public void back(double distance) {
+		
+	}
+	
+	@Override
+	public void doNothing() {
+		
+	}
+	
+	
 
 }
