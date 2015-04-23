@@ -64,7 +64,7 @@ public class Conan extends AdvancedRobot {
 	// 벽에 부딪혔을때
 	@Override
 	public void onHitWall(HitWallEvent event) {
-		movingForward = false;
+		movingForward = true;
 		reverseDirection();
 	}
 		
@@ -73,14 +73,12 @@ public class Conan extends AdvancedRobot {
 	public void reverseDirection() {
 		if (movingForward) {
 			movingForward = false;
-			setTurnLeft(100);
-			setAhead(200);
-			execute();
+			turnLeft(100);
+			ahead(200);
 		} else {
 			movingForward = true;
-			setTurnRight(100);
-			setBack(200);
-			execute();
+			turnRight(100);
+			back(200);
 		}
 	}
 	
