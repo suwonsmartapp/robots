@@ -1,99 +1,88 @@
 package hku;
 
-import robocode.HitByBulletEvent;
-import robocode.JuniorRobot;
+import java.awt.Color;
 
-public class Conan extends JuniorRobot {
-	int turnDirection = 1; // Clockwise or counterclockwise
+import robocode.AdvancedRobot;
+import robocode.HitRobotEvent;
+import robocode.HitWallEvent;
+import robocode.ScannedRobotEvent;
+import sampleteam.RobotColors;
+
+
+public class Conan extends AdvancedRobot {
 	boolean movingForward;
-	
-	@Override
+	/**
+	 * run:  Leader's default behavior
+	 */
 	public void run() {
-		
-		// Set colors
 		movingForward = true;
-//		setBodyColor(new Color(255, 125, 0));
-//		setGunColor(new Color(59, 59, 59));
-//		setRadarColor(new Color(0, 0, 0));
-//		setBulletColor(new Color(255, 0, 0));
-//		setScanColor(new Color(255, 255, 128));
-				
-		while(true) {
-			ahead(100); // Move ahead 100
-			turnLeft(100);
-			turnGunRight(360); // Spin gun around
-			back(100); // Move back 100
-			turnRight(100);
-			turnGunRight(360); // Spin gun around
-			/*
-			ahead(1000);
-			turnGunRight(20);
+		// Prepare RobotColors object
+		RobotColors c = new RobotColors();
+
+		c.bodyColor = Color.orange;
+		c.gunColor = Color.black;
+		c.radarColor = Color.magenta;
+		c.scanColor = Color.yellow;
+		c.bulletColor = Color.red;
+
+		// Set the color of this robot containing the RobotColors
+		setBodyColor(c.bodyColor);
+		setGunColor(c.gunColor);
+		setRadarColor(c.radarColor);
+		setScanColor(c.scanColor);
+		setBulletColor(c.bulletColor);
+
+
+		while (true) {
+			setTurnLeft(50);
+			setAhead(500);
+			setTurnGunRight(15);
 			
-			ahead(100);			
-			turnLeft(100);
-			
-			ahead(100);
-			turnGunLeft(20);
-			
-			ahead(100);			
-			turnRight(100);
-			
-			turnGunRight(90);
-			turnLeft(30);
-			ahead(30);
-			turnGunLeft(120);
-			*/
-			
+			execute();
 		}
 	}
-	
-	// 레이더 감지
-	@Override
-	public void onScannedRobot() {
-		movingForward = false;
-		turnGunTo(scannedAngle);
 
-		// Fire!
+	// 레이더에 포착시
+	@Override
+	public void onScannedRobot(ScannedRobotEvent event) {
 		fire(1);
 	}
 	
 	// 총알에 맞았을때
-	public void onHitByBullet(HitByBulletEvent e) {
+	public void onHitByBullet(ScannedRobotEvent event) {
 		movingForward = true;
 		reverseDirection();
 	}
 	
 	// 다른 로봇과 부딪혔을때
 	@Override
-	public void onHitRobot() {
-		movingForward = true;
-		turnAheadLeft(100, 90 - hitByBulletBearing);
+	public void onHitRobot(HitRobotEvent event) {
+		movingForward = false;
+		reverseDirection();
 	}
 	
 	// 벽에 부딪혔을때
 	@Override
-	public void onHitWall() {
+	public void onHitWall(HitWallEvent event) {
+		movingForward = false;
 		reverseDirection();
 	}
+		
+	
 	
 	public void reverseDirection() {
 		if (movingForward) {
-			turnLeft(30);
-			back(200);
-			turnRight(60);
-			ahead(100);
-			turnGunLeft(90);
+			setTurnLeft(30);
+			setBack(200);
+			setTurnGunLeft(90);
 			movingForward = false;
 		} else {
-			turnRight(90);
-			ahead(200);
-			turnLeft(30);
-			back(100);
-			turnGunRight(90);
+			setTurnRight(90);
+			setAhead(200);
+			setTurnGunRight(90);
 			movingForward = true;
 		}
 	}
-
 	
 
 }
