@@ -23,7 +23,7 @@ public class Conan extends AdvancedRobot {
 		c.gunColor = Color.black;
 		c.radarColor = Color.magenta;
 		c.scanColor = Color.yellow;
-		c.bulletColor = Color.red;
+		c.bulletColor = Color.yellow;
 
 		// Set the color of this robot containing the RobotColors
 		setBodyColor(c.bodyColor);
@@ -73,12 +73,12 @@ public class Conan extends AdvancedRobot {
 	public void reverseDirection() {
 		if (movingForward) {
 			movingForward = false;
-			turnLeft(100);
-			ahead(200);
+			turnRight(200);
+			ahead(-100);
 		} else {
 			movingForward = true;
-			turnRight(100);
-			back(200);
+			turnLeft(200);
+			back(-100);
 		}
 	}
 	
